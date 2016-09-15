@@ -21,7 +21,7 @@ data Action =
 
 type Identifier = String 
 
--- String is the test of the node
+-- String is the text of the node
 -- List is the list of possible actions after
 data DiaTree = DiaTree String [ActionTree] 
               | EmptyTree

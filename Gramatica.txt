@@ -1,0 +1,13 @@
+TekstAdventure Grammar
+
+Start 		-> Dialog* 
+Dialog 		-> /StartDialog indentifier Tekst *Action /EndDialog
+Action		-> Continuation
+Continuation-> /StartContinue Tekst "dialog identifier" /EndContinue
+Tekst 		-> /StartTekst Word+ /EndTekst
+indentifier	-> Word
+Word		-> String
+
+// tekst en identifiers mogen nu niet cijfers bevatten
+
+

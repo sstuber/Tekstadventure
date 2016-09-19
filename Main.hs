@@ -7,16 +7,20 @@ import Lexer
 import Tokens
 import Parser
 import Fold
+import Game
 
 import Text.ParserCombinators.Parsec hiding (spaces)
 
 main :: IO ()
 main = do 
          input <- readFile "C:\\universiteit\\Projecten\\TekstAdventure\\Text.txt"
-         let x = show . f . readTokens $ alexScanTokens input
-         putStrLn x
+         let tree = f . readTokens $ alexScanTokens input
+         putStrLn $ show tree
+         gameHandler tree
+         --let x = show .  .f . readTokens $ alexScanTokens input
+         --putStrLn x
             where 
-                f (Just xs) = makeTree xs "Main"
+                f (Just xs) = createTree xs "Main"
                 f Nothing = EmptyTree
                     
 

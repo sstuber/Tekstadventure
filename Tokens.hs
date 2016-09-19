@@ -34,4 +34,4 @@ data ActionTree = ContiTree String DiaTree
     deriving (Eq)
 
 instance Show ActionTree where
-  (ContiTree a b) = Show a
+  show (ContiTree a b) = show a 

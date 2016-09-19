@@ -24,10 +24,10 @@ foldProgram (d1 a1) = foldList
 -}
 
 --finds the dialog and creates a tree of it. finish condition needs work
-makeTree :: [Dialog] -> String-> DiaTree
-makeTree [] _       = EmptyTree
-makeTree _ "Stop"   = EmptyTree
-makeTree xs s       = makeBranch (findBranch xs s) xs
+createTree :: [Dialog] -> String-> DiaTree
+createTree [] _       = EmptyTree
+createTree _ "Stop"   = EmptyTree
+createTree xs s       = makeBranch (findBranch xs s) xs
 
 -- with the name of the branch it gives the branch
 findBranch :: [Dialog] -> String -> Dialog
@@ -47,4 +47,4 @@ mkActionTree xs zs = foldr (\x ys -> (convActionToTree x zs) : ys) [] xs
 -- foldr (\x ys -> convActiontoTree x zs : ys) [] xs
 
 convActionToTree :: Action -> [Dialog] -> ActionTree
-convActionToTree (Continue text ident) ys =  ContiTree text (makeTree ys ident)
+convActionToTree (Continue text ident) ys =  ContiTree text (createTree ys ident)

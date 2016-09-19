@@ -10,7 +10,9 @@ import System.IO
     continue on that branch
 
 -}
-
+{-
+    might be better for the toekomst to change all the tree's into one format
+-}
 
 {-  prints the text of the current situation
     then prints the actions with prefix numbers
@@ -23,7 +25,7 @@ gameHandler x@(DiaTree _ as) = do
     printActions 0 as
     actionIndex <- getResponse as -- action index might be 1 higher than the actual index
     if actionIndex < length as && 0 <= actionIndex 
-        then 
+        then  -- splits the actions of the normal dialog tree
             doAction actionIndex as
         else 
             print "dumfuk"
@@ -49,8 +51,17 @@ getAString (ContiTree a _) = a
 -- handles the response. reads response 
 getResponse :: [ActionTree] -> IO Int
 getResponse as = do
-    input <- getLine
-    let index = head input
+    input <- getLine 
+    let mb = readMaybe . head . input 
+    if isNothing mb 
+        then
+            -- input ain't no number 
+            -- ask again
+        else
+             return . (fromJust mb)
+
+    return . show . head input -- zit nog niet ingebouwd dat de
+    --let index = head input
 
 
 -- gets the dialog from the actionlist

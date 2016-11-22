@@ -16,7 +16,7 @@ main = do
          input <- readFile "C:\\universiteit\\Projecten\\TekstAdventure\\Text.txt"
          let tree = f . readTokens $ alexScanTokens input
          putStrLn $ show tree
-         gameHandler tree
+         runGame tree
          --let x = show .  .f . readTokens $ alexScanTokens input
          --putStrLn x
             where 
